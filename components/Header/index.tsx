@@ -1,8 +1,8 @@
 import React from 'react';
-import {MenuList} from "components/Header/styles";
+import {Blocks, Gradient, LogoBlock, LogoText, MenuList} from "components/Header/styles";
 import Link from "next/link";
 import {Container} from "styles/common";
-
+import {Icons} from "components/Icons/Icons";
 
 export const Header = () => {
   const routes = [
@@ -15,20 +15,31 @@ export const Header = () => {
     {id: 7, path: '/faq', title: 'FAQ'},
   ]
   return (
-   <Container>
-     <MenuList>
-       {routes.map(list => {
-         return (
-          <li key={list.id}>
-            <Link href={list.path} as={list.path}>
-              <a>{list.title}</a>
-            </Link>
-          </li>
-         )
-       })}
 
-     </MenuList>
-   </Container>
+   <Gradient>
+     <Container>
+       <Blocks>
+         <LogoBlock>
+           <Icons type={'logo'} classes={{height: 66, width: 59}}/>
+           <LogoText>LetsGold</LogoText>
+         </LogoBlock>
+         <MenuList>
+           {routes.map(list => {
+             return (
+              <li key={list.id}>
+                <Link href={list.path} as={list.path}>
+                  <a>{list.title}</a>
+                </Link>
+              </li>
+             )
+           })}
+         </MenuList>
+
+         <Icons type={'user'} classes={{height: 28, width: 28}}/>
+       </Blocks>
+     </Container>
+   </Gradient>
+
 
   );
 };
